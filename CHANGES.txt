@@ -1,0 +1,3 @@
+v1.1 changes. Copy these files over your repo, then DELETE:
+  components/TreatmentsShowcase.tsx   (replaced by components/TreatmentExplorer.tsx)
+Then delete this CHANGES.txt file.

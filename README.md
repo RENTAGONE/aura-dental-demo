@@ -23,6 +23,10 @@ Also site-wide: cinematic splash, Bangla-to-English prompt after 3 seconds, butt
 `lib/site.ts`: WhatsApp number, phone, address, hours, consultation fee. Everything on the site updates.
 `lib/data.ts`: treatments, prices, doctors, reviews, FAQs, stats (all bilingual).
 
+## Reskin in minutes
+
+All colours live in the `:root` block at the top of `app/globals.css`. Swap those values (ready-made palettes are in `REBUILD_PROMPT.md`), then update `themeColor` in `app/layout.tsx` and the hex values in `app/icon.svg`.
+
 ## Photos: drop files in, no code changes
 
 Every image slot shows a designed art fallback until a real photo exists at its path, so the site always looks finished.
@@ -62,3 +66,7 @@ The rate limiter is in-memory; for heavy traffic on serverless, swap `limited()`
 
 - All clinic names, doctors, reviews, ratings and prices are demo content. Replace them before using this for a real client.
 - Fonts (Fraunces, Plus Jakarta Sans, Hind Siliguri, Noto Serif Bengali) load through `next/font`, so the first build needs internet.
+
+## Changelog
+
+- v1.1: tabbed treatments explorer (replaces the horizontal gallery), splash plays on every refresh, stat counters fixed, colours moved to CSS variables, reusable rebuild prompt added.

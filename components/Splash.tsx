@@ -18,11 +18,11 @@ export function Splash({ show }: { show: boolean }) {
           <svg viewBox="0 0 64 64" className="relative h-24 w-24" fill="none" strokeWidth="1.2" strokeLinejoin="round">
             <defs>
               <linearGradient id="sg" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#8ADAD2" /><stop offset="1" stopColor="#E4C98A" />
+                <stop offset="0" style={{ stopColor: "rgb(var(--lagoon-300))" }} /><stop offset="1" style={{ stopColor: "rgb(var(--brass-300))" }} />
               </linearGradient>
             </defs>
             <motion.path
-              d="M26 8h12v18h18v12H38v18H26V38H8V26h18z" stroke="url(#sg)" fill="#8ADAD2"
+              d="M26 8h12v18h18v12H38v18H26V38H8V26h18z" stroke="url(#sg)" className="fill-lagoon-300"
               initial={{ pathLength: 0, fillOpacity: 0 }} animate={{ pathLength: 1, fillOpacity: 0.14 }}
               transition={{ duration: 1.1, ease: SOFT }}
             />
@@ -35,7 +35,7 @@ export function Splash({ show }: { show: boolean }) {
             Aura Medical Infrastructure
           </motion.p>
           <div className="relative h-px w-44 overflow-hidden bg-white/10">
-            <motion.div className="h-full origin-left bg-brass-300" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.2, ease: "linear" }} />
+            <motion.div className="h-full origin-left bg-brass-300" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.5, ease: "linear" }} />
           </div>
         </motion.div>
       )}

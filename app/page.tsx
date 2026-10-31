@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Stats, TrustMarquee } from "@/components/TrustStats";
-import { TreatmentsShowcase } from "@/components/TreatmentsShowcase";
+import { TreatmentExplorer } from "@/components/TreatmentExplorer";
 import { Technology } from "@/components/Technology";
 import { ResultsSection } from "@/components/ResultsSection";
 import { Journey } from "@/components/Journey";
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <TrustMarquee />
       <Stats />
-      <TreatmentsShowcase />
+      <TreatmentExplorer />
       <Technology />
       <ResultsSection count={2} />
       <Journey />

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import type { Bi, Lang } from "@/lib/i18n";
 import { Splash } from "./Splash";
@@ -15,36 +15,22 @@ export function useLang(): LangCtx {
 }
 
 export function Providers({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("bn");
+  const [lang, setLang] = useState<Lang>("bn");
   const [splash, setSplash] = useState(true);
   const [askOpen, setAskOpen] = useState(false);
   const [askDone, setAskDone] = useState(false);
 
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    try { localStorage.setItem("aura-lang", l); } catch { /* storage unavailable */ }
-  }, []);
-
-  // Splash: fade in, hold 1.5s, slide up. Skipped for repeat visits within the same session.
+  // Splash plays on EVERY full page load/refresh: fade in, hold 1.5s, slide up.
+  // (Client-side navigation keeps this state, so it does not replay between pages.)
   useEffect(() => {
-    try {
-      if (localStorage.getItem("aura-lang") === "en") { setLangState("en"); setAskDone(true); }
-      if (sessionStorage.getItem("aura-ask") === "1") setAskDone(true);
-    } catch { /* storage unavailable */ }
-    let seen = false;
-    try { seen = sessionStorage.getItem("aura-splash") === "1"; } catch { /* storage unavailable */ }
-    if (seen) { setSplash(false); return; }
-    const id = window.setTimeout(() => {
-      setSplash(false);
-      try { sessionStorage.setItem("aura-splash", "1"); } catch { /* storage unavailable */ }
-    }, 2400);
+    const id = window.setTimeout(() => setSplash(false), 2600);
     return () => window.clearTimeout(id);
   }, []);
 
   useEffect(() => { document.body.style.overflow = splash ? "hidden" : ""; }, [splash]);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
-  // Language prompt: 3 seconds after the splash clears.
+  // Language prompt: 3 seconds after the splash clears. Bangla is the default on every load.
   useEffect(() => {
     if (splash || askDone || lang === "en") return;
     const id = window.setTimeout(() => setAskOpen(true), 3000);
@@ -55,10 +41,9 @@ export function Providers({ children }: { children: ReactNode }) {
     if (toEnglish) setLang("en");
     setAskOpen(false);
     setAskDone(true);
-    try { sessionStorage.setItem("aura-ask", "1"); } catch { /* storage unavailable */ }
   };
 
-  const value = useMemo<LangCtx>(() => ({ lang, setLang, tr: (b: Bi) => b[lang], ready: !splash }), [lang, setLang, splash]);
+  const value = useMemo<LangCtx>(() => ({ lang, setLang, tr: (b: Bi) => b[lang], ready: !splash }), [lang, splash]);
 
   return (
     <Ctx.Provider value={value}>

@@ -5,10 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: { 950: "#06171B", 900: "#0A2429", 800: "#0F3138", 700: "#17454D" },
-        lagoon: { 300: "#8ADAD2", 400: "#4FC3BC", 500: "#1FA3A3", 600: "#168587" },
-        brass: { 200: "#F0DDB0", 300: "#E4C98A", 400: "#D4AE63", 500: "#B98F45" },
-        porcelain: "#F3F7F6",
+        ink: { 950: "rgb(var(--ink-950) / <alpha-value>)", 900: "rgb(var(--ink-900) / <alpha-value>)", 800: "rgb(var(--ink-800) / <alpha-value>)", 700: "rgb(var(--ink-700) / <alpha-value>)" },
+        lagoon: { 300: "rgb(var(--lagoon-300) / <alpha-value>)", 400: "rgb(var(--lagoon-400) / <alpha-value>)", 500: "rgb(var(--lagoon-500) / <alpha-value>)", 600: "rgb(var(--lagoon-600) / <alpha-value>)" },
+        brass: { 200: "rgb(var(--brass-200) / <alpha-value>)", 300: "rgb(var(--brass-300) / <alpha-value>)", 400: "rgb(var(--brass-400) / <alpha-value>)", 500: "rgb(var(--brass-500) / <alpha-value>)" },
+        porcelain: "rgb(var(--porcelain) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "var(--font-bn)", "system-ui", "sans-serif"],

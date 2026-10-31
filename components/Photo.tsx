@@ -16,12 +16,12 @@ const GLYPH: Record<Art, ReactNode> = {
 function ArtFallback({ kind, dim }: { kind: Art; dim?: boolean }) {
   return (
     <div className={cn("absolute inset-0", dim && "brightness-75 saturate-0")} aria-hidden>
-      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_20%_0%,#17454D_0%,#0A2429_55%,#06171B_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_20%_0%,rgb(var(--ink-700))_0%,rgb(var(--ink-900))_55%,rgb(var(--ink-950))_100%)]" />
       <div className="absolute -right-1/4 top-1/4 h-2/3 w-2/3 rounded-full bg-lagoon-400/25 blur-3xl" />
       <div className="absolute -left-1/4 bottom-0 h-1/2 w-1/2 rounded-full bg-brass-400/20 blur-3xl" />
       <svg
         viewBox="0 0 64 64" fill="none" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"
-        className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 stroke-brass-300/80 drop-shadow-[0_0_18px_rgba(79,195,188,0.5)]"
+        className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 stroke-brass-300/80 drop-shadow-[0_0_18px_rgb(var(--lagoon-400)/0.5)]"
       >
         {GLYPH[kind]}
       </svg>

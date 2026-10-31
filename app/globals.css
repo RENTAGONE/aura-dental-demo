@@ -2,12 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* THEME: the only place colours live. Values are R G B channels. Swap this block to reskin the whole site. */
+:root {
+  --ink-950: 6 23 27;
+  --ink-900: 10 36 41;
+  --ink-800: 15 49 56;
+  --ink-700: 23 69 77;
+  --lagoon-300: 138 218 210;
+  --lagoon-400: 79 195 188;
+  --lagoon-500: 31 163 163;
+  --lagoon-600: 22 133 135;
+  --brass-200: 240 221 176;
+  --brass-300: 228 201 138;
+  --brass-400: 212 174 99;
+  --brass-500: 185 143 69;
+  --porcelain: 243 247 246;
+}
+
 @layer base {
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body { @apply bg-ink-950 font-sans text-ink-950 antialiased; line-height: 1.7; overflow-x: hidden; }
   h1, h2, h3, h4 { @apply font-display; line-height: 1.3; letter-spacing: -0.01em; }
-  ::selection { background: #D4AE63; color: #06171B; }
-  :focus-visible { outline: 2px solid #4FC3BC; outline-offset: 3px; }
+  ::selection { background: rgb(var(--brass-400)); color: rgb(var(--ink-950)); }
+  :focus-visible { outline: 2px solid rgb(var(--lagoon-400)); outline-offset: 3px; }
 }
 
 @layer components {

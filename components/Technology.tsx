@@ -30,11 +30,11 @@ export function Technology() {
         <Tile className="md:col-span-4 md:row-span-2" icon={ScanLine} title={bi("থ্রিডি CBCT ইমেজিং", "3D CBCT imaging")} text={bi("হাড়ের ঘনত্ব, স্নায়ু ও সাইনাস আগেই মাপা হয়, তাই সার্জারি হয় নিখুঁত।", "Bone density, nerves and sinus are mapped in advance, so surgery is precise.")}>
           <div className="relative h-64 overflow-hidden rounded-2xl bg-ink-900 ring-1 ring-white/10 md:h-full md:min-h-[16rem]">
             <svg viewBox="0 0 200 120" className="absolute inset-0 h-full w-full" aria-hidden>
-              <path d="M20 100C20 28 60 8 100 8s80 20 80 92" fill="none" stroke="#4FC3BC" strokeOpacity=".5" strokeWidth="1.2" />
-              <path d="M36 100C36 44 66 26 100 26s64 18 64 74" fill="none" stroke="#D4AE63" strokeOpacity=".35" strokeWidth="1" />
+              <path d="M20 100C20 28 60 8 100 8s80 20 80 92" fill="none" className="stroke-lagoon-400/50" strokeWidth="1.2" />
+              <path d="M36 100C36 44 66 26 100 26s64 18 64 74" fill="none" className="stroke-brass-400/35" strokeWidth="1" />
               {Array.from({ length: 11 }, (_, i) => {
                 const a = (i / 10) * Math.PI;
-                return <circle key={i} cx={100 - 80 * Math.cos(a)} cy={100 - 88 * Math.sin(a)} r={4.4} fill="#E4C98A" fillOpacity=".85" />;
+                return <circle key={i} cx={100 - 80 * Math.cos(a)} cy={100 - 88 * Math.sin(a)} r={4.4} className="fill-brass-300/85" />;
               })}
             </svg>
             <div className="absolute inset-x-0 top-0 h-10 animate-scan bg-gradient-to-b from-transparent via-lagoon-400/35 to-transparent" />
@@ -43,17 +43,17 @@ export function Technology() {
 
         <Tile className="md:col-span-2" delay={0.08} icon={Microscope} title={bi("সার্জিক্যাল মাইক্রোস্কোপ", "Surgical microscope")} text={bi("২০ গুণ বর্ধিত দৃষ্টিতে রুট ক্যানাল।", "Root canals under 20× magnification.")}>
           <svg viewBox="0 0 100 100" className="mx-auto h-28 w-28" aria-hidden>
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#4FC3BC" strokeOpacity=".5" />
-            <circle cx="50" cy="50" r="28" fill="none" stroke="#E4C98A" strokeOpacity=".5" />
-            <g className="origin-center animate-spin-slow [transform-box:fill-box]"><path d="M50 4v16M50 80v16M4 50h16M80 50h16" stroke="#E4C98A" strokeWidth="1.4" /></g>
-            <circle cx="50" cy="50" r="3" fill="#8ADAD2" />
+            <circle cx="50" cy="50" r="42" fill="none" className="stroke-lagoon-400/50" />
+            <circle cx="50" cy="50" r="28" fill="none" className="stroke-brass-300/50" />
+            <g className="origin-center animate-spin-slow [transform-box:fill-box]"><path d="M50 4v16M50 80v16M4 50h16M80 50h16" className="stroke-brass-300" strokeWidth="1.4" /></g>
+            <circle cx="50" cy="50" r="3" className="fill-lagoon-300" />
           </svg>
         </Tile>
 
         <Tile className="md:col-span-2" delay={0.16} icon={Smile} title={bi("ডিজিটাল স্মাইল ডিজাইন", "Digital smile design")} text={bi("ট্রিটমেন্টের আগেই আপনার নতুন হাসি দেখুন।", "See your new smile before treatment begins.")}>
           <svg viewBox="0 0 120 60" className="mx-auto h-24 w-full" fill="none" aria-hidden>
-            <motion.path d="M6 20c14 34 94 34 108 0" stroke="#E4C98A" strokeWidth="1.5" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, ease: SOFT }} />
-            <motion.path d="M20 30v14M40 36v16M60 38v17M80 36v16M100 30v14" stroke="#4FC3BC" strokeOpacity=".7" strokeWidth="1.2" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3, ease: SOFT }} />
+            <motion.path d="M6 20c14 34 94 34 108 0" className="stroke-brass-300" strokeWidth="1.5" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, ease: SOFT }} />
+            <motion.path d="M20 30v14M40 36v16M60 38v17M80 36v16M100 30v14" className="stroke-lagoon-400/70" strokeWidth="1.2" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3, ease: SOFT }} />
           </svg>
         </Tile>
 

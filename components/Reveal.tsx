@@ -1,6 +1,6 @@
 "use client";
 
-import { animate, motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef, useState, type PointerEvent as RPointerEvent, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { useLang } from "./Providers";
@@ -19,16 +19,35 @@ export function Reveal({ children, className, delay = 0, y = 36 }: { children: R
   );
 }
 
+/**
+ * Count-up that starts when the number scrolls into view.
+ * Uses IntersectionObserver + requestAnimationFrame (no framer-motion hooks) so it cannot get stuck at 0.
+ */
 export function Counter({ to, decimals = 0, suffix = "" }: { to: number; decimals?: number; suffix?: string }) {
   const { lang } = useLang();
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   const [v, setV] = useState(0);
+
   useEffect(() => {
-    if (!inView) return;
-    const c = animate(0, to, { duration: 1.8, ease: SOFT, onUpdate: setV });
-    return () => c.stop();
-  }, [inView, to]);
+    const el = ref.current;
+    if (!el || to === 0) return;
+    let raf = 0;
+    const run = () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setV(to); return; }
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min((now - t0) / 1800, 1);
+        setV(to * (1 - Math.pow(1 - p, 4)));
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    if (typeof IntersectionObserver === "undefined") { setV(to); return; }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); run(); } }, { threshold: 0.3 });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(raf); };
+  }, [to]);
+
   const text = v.toLocaleString(lang === "bn" ? "bn-BD" : "en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   return <span ref={ref}>{text}{suffix}</span>;
 }

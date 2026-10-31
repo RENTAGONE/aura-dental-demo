@@ -13,15 +13,15 @@ export function ContactInfo() {
       <Reveal>
         <a href={SITE.mapsUrl} target="_blank" rel="noopener noreferrer" className="group relative block aspect-[16/10] overflow-hidden rounded-[2rem] bg-ink-900 ring-1 ring-ink-950/10" aria-label={tr(bi("গুগল ম্যাপে খুলুন", "Open in Google Maps"))}>
           <svg viewBox="0 0 400 250" className="absolute inset-0 h-full w-full" aria-hidden>
-            <rect width="400" height="250" fill="#0A2429" />
-            <g stroke="#17454D" strokeWidth="10" strokeLinecap="round" fill="none">
+            <rect width="400" height="250" className="fill-ink-900" />
+            <g className="stroke-ink-700" strokeWidth="10" strokeLinecap="round" fill="none">
               <path d="M-10 70H410M-10 170H410M90 -10V260M290 -10V260" />
-              <path d="M-10 230L410 20" strokeWidth="14" stroke="#1d5a63" />
+              <path d="M-10 230L410 20" strokeWidth="14" className="stroke-lagoon-600/60" />
             </g>
-            <g stroke="#0F3138" strokeWidth="3" fill="none"><path d="M-10 120H410M190 -10V260M40 -10V260M340 -10V260" /></g>
-            <circle cx="200" cy="122" r="46" fill="#4FC3BC" fillOpacity=".12" className="origin-center animate-ping [animation-duration:3s] [transform-box:fill-box]" />
-            <circle cx="200" cy="122" r="9" fill="#D4AE63" />
-            <circle cx="200" cy="122" r="3.5" fill="#06171B" />
+            <g className="stroke-ink-800" strokeWidth="3" fill="none"><path d="M-10 120H410M190 -10V260M40 -10V260M340 -10V260" /></g>
+            <circle cx="200" cy="122" r="46" className="fill-lagoon-400/10 origin-center animate-ping [animation-duration:3s] [transform-box:fill-box]" />
+            <circle cx="200" cy="122" r="9" className="fill-brass-400" />
+            <circle cx="200" cy="122" r="3.5" className="fill-ink-950" />
           </svg>
           <span className="glass absolute bottom-4 left-4 rounded-full px-4 py-2 text-sm text-white transition group-hover:bg-white/15">{tr(bi("গুগল ম্যাপে খুলুন", "Open in Google Maps"))}</span>
         </a>
